@@ -1,0 +1,63 @@
+---
+title: "Practice 2.2"
+output: html_document
+date: "2022-10-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# library and read the file 
+
+
+library("dplyr")
+
+
+library("tidyr")
+
+
+rairuno=read.table("rairuno.txt",header = TRUE)
+
+
+head(rairuno)
+
+
+# Replace nutrient with enriched in the data set.
+
+
+rairuno$treatment=ifelse(rairuno$treatment=='nutrient','enriched','water')
+
+
+head(rairuno)
+
+
+# Reformat the table in order to have the day as a single variable (factor)
+
+
+rairuno_long <- rairuno %>% pivot_longer(day3:day8, names_to = "Days", values_to = "Length")
+
+
+head(rairuno_long)
+
+
+# Remove variables row and column
+
+
+rairuno_long$row=NULL
+
+
+rairuno_long$column=NULL
+
+
+head(rairuno_long)
+
+
+#Merge variables Spatial1 and Spatial2
+
+
+rairuno_long_spa=rairuno_long %>%unite("spatial",spatial1:spatial2,remove = TRUE)
+
+
+head(rairuno_long_spa)
+
