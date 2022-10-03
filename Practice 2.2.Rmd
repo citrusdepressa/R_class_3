@@ -10,54 +10,46 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # library and read the file 
 
-
+```{r,  eval=T, include=FALSE}
 library("dplyr")
-
-
 library("tidyr")
+```
 
-
+```{r,  eval=T}
 rairuno=read.table("rairuno.txt",header = TRUE)
-
-
 head(rairuno)
+```
 
 
 # Replace nutrient with enriched in the data set.
 
-
+```{r,  eval=T}
 rairuno$treatment=ifelse(rairuno$treatment=='nutrient','enriched','water')
-
-
 head(rairuno)
+```
 
 
 # Reformat the table in order to have the day as a single variable (factor)
 
-
+```{r,  eval=T}
 rairuno_long <- rairuno %>% pivot_longer(day3:day8, names_to = "Days", values_to = "Length")
-
-
 head(rairuno_long)
+```
 
 
 # Remove variables row and column
 
-
+```{r,  eval=T}
 rairuno_long$row=NULL
-
-
 rairuno_long$column=NULL
-
-
 head(rairuno_long)
+```
 
 
 #Merge variables Spatial1 and Spatial2
 
-
+```{r,  eval=T}
 rairuno_long_spa=rairuno_long %>%unite("spatial",spatial1:spatial2,remove = TRUE)
-
-
 head(rairuno_long_spa)
+```
 
