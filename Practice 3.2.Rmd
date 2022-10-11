@@ -1,0 +1,28 @@
+---
+title: "Practice 3.2"
+output: html_document
+date: "2022-10-11"
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, eval=F, include=T}
+#weight_diet
+weight=c(104,96,95,91,87,81,77,75,112,118)
+t=c("before_diet", "after_diet")
+time=as.factor(t)
+weight_diet=data.frame(weight,time)
+#WEIGhT_LOSS
+subject=c("subject1","subject2","subject3","subject4","subject5")
+weight_loss=c(-0.08,-0.04,-0.06,-0.02,0.06)
+swtable=data.frame(subject,weight_loss)
+swtable
+WEIGGHT_LOSS=list(A=subject,B=weight_loss,C=swtable)
+#messege
+messege=c("R is very cool, I love R")
+#BUBBLE_DIET
+BUBBLE_DIET=list(A=weight_diet,B=WEIGGHT_LOSS,C=swtable)
+BUBBLE_DIET
