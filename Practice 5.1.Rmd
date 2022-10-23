@@ -1,0 +1,27 @@
+---
+title: "Practice 5.1"
+output: html_document
+date: "2022-10-23"
+---
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r, eval=F, include=T}
+
+library(leaflet)
+library(rgdal)
+
+#get the map
+getwd()
+taiwan <- readOGR('COUNTY_MOI_1090820.shp', use_iconv=TRUE, encoding='UTF-8')
+FRE <- paste(sep = "<br/>",
+             "<b><a href='http://www.hort.ntu.edu.tw/web/index/index.jsp'>Building No.4</a></b>",
+             "Department Horticulture and landscape Architecture")
+leaflet(taiwan) %>%
+  addPolygons(weight=0.3) %>%
+  addTiles(group="NTU") %>%
+  addPopups( 121.5379203079702,25.01680920839236,FRE, options = popupOptions(closeButton = TRUE))
+
+```
+
