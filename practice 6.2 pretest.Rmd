@@ -1,8 +1,8 @@
 ---
 title: "practice 6.2 pretest"
 output:
-  word_document: default
   html_document: default
+  word_document: default
 date: "2022-10-28"
 ---
 
@@ -13,10 +13,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r, eval=F, include=T}
 grow<-function(start_1, start_2){
-  num_gen<=30
+  num_gen<-30
   N1 <- rep(0,10)
   N2 <- rep(0,10)
-  generation<-rep(1,num_gen)
+  generation<-1:num_gen
   growth.rate<-1.2
   K1<-100
   K2<-120
@@ -24,11 +24,11 @@ grow<-function(start_1, start_2){
   a21<-0.8
   N1[1]<-start_1
   N2[1]<-start_2
-  for (i in 2:3)  {
+  for (i in 2:num_gen)  {
     N1[i] = N1[i-1] + (3.2* N1[i-1] * ((K1-N1[i-1]-(a12*N2[i-1]))/K1))
     N2[i] = N2[i] + (growth.rate * N2[i-1] * ((K2-N2[i-1]-(a21*N1[i-1]))*K2))
-    generation[1]=1 
-    print (N1[i])
+    #generation[1]=1 
+   print (N1[i])
   }
   if (N1[1]>2){
     plot(N1~generation,typ="b",ylim=c(0,min(c(K1,K2))),ylab="N")
@@ -51,5 +51,4 @@ text(4,110,"Species 2 alone")
 
 grow(1,2)
 text(6,110,"Both Species competing")
-
 ```
