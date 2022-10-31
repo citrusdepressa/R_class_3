@@ -14,8 +14,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r, eval=F, include=T}
 grow<-function(start_1, start_2){
   num_gen<-30
-  N1 <- rep(0,10)
-  N2 <- rep(0,10)
+  N1 <- rep(0,num_gen)
+  N2 <- rep(0,num_gen)
   generation<-1:num_gen
   growth.rate<-1.2
   K1<-100
