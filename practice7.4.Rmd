@@ -1,0 +1,30 @@
+---
+title: "Practice 7.4"
+output: html_document
+date: "2022-11-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, eval=F, include=T}
+#create function
+my.t.test=function(dayx, dayy){
+  t.value=(mean(dayx)-mean(dayy))/sqrt(var(dayx)/length(dayx)+var(dayy)/length(dayy))
+  p.value=pt(t.value,length(dayx)-1 )
+  if(p.value>=0.05){
+    print("Can't reject null hypothesis")
+  }
+  else{print("Reject null hypothesis")}
+}
+
+#read file
+getwd()
+read.table("rairuno.txt")
+head(rairuno)
+
+#test
+my.t.test(rairuno$day3, rairuno$day4)
+my.t.test(rairuno$day7, rairuno$day8)
+```
